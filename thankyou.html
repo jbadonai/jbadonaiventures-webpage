@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Thank You For Your Payment</title>
+  <style>
+    /* Responsive Styles */
+    @media only screen and (max-width: 600px) {
+      .container {
+        width: 90%;
+        margin: 0 auto;
+      }
+      .card {
+        width: 80%;
+        margin: 0 auto;
+      }
+    }
+
+/* General Styles */
+body {
+  background-color: rgb(45,45,45);
+color: rgb(0,225,127);
+}
+
+      /* position and style logo */
+      .logo {
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        width: 70px;
+        height: 70px;
+        z-index: 1;
+
+	padding: auto;
+
+	margin: auto;
+      }
+      .left-aligned-div {
+        text-align: left;
+      }
+	.page-center{
+	margin: 50px auto;
+	color: yellow;
+}
+
+.container {
+  width: 80%;
+  margin: 0 auto;
+}
+      .card {
+        width: 70%;
+        height: Auto;
+        margin: 50px auto;
+        background: rgb(220,220,220);
+	color:black;
+        box-shadow: 0px 0px 10px #000000;
+        border-radius: 10px;
+        text-align: center;
+        padding: 20px;
+      }
+h1{
+  text-align: center;
+  margin-top: 30px;
+}
+
+.info {
+  text-align: center;
+  margin: 50px auto;
+
+}
+
+.key{
+color: blue;
+margin:5px;
+padding: 5px;
+
+}
+
+
+
+footer {
+  width: 100%;
+  text-align: center;
+  margin-top: 50px;
+  padding: 20px;
+}
+  </style>
+</head>
+<body>
+<div >
+<img src="jba logo.png" width=40px alt="JBA" class="logo " >
+</div>
+  <div class="container">
+    <h1>Thank you for your payment!</h1>
+<p class="info">Your transaction has been completed successfully.</p>
+    <div class="card">
+
+  <p><b>Payment ID:</b> <strong><span class="key" id="paymentId-value"></span></strong></p>
+  <p><b>Transaction ID:</b> <strong><span class="key" id="payerId-value"></span></strong></p>
+    </div>
+
+
+  </div>
+	<div class="info">
+  <p  >Please go back to JVD app and supply your Payment ID and Transaction Id to activate your application. Please keep your a copy of your Payment ID and Transaction ID for future reference.</p>
+	</div>
+
+  <footer>
+    <p>If you have any issues or questions, please contact our support team using the contact info below:<br> </p>
+	<div class="page-center">
+		<p>Email: jbadonaiventures@gmail.com</p>
+		<p>Phone: +234 802 222 4284</p>
+	</div>
+  </footer>
+
+  <script>
+    // Get the current URL
+    var url = window.location.href;
+
+    // Use URLSearchParams to parse the query string
+    let paramString = url.split('?')[1];
+    var params = new URLSearchParams(paramString);
+
+    // Get the values of the parameters
+    var paymentId = params.get("paymentId");
+    var payerId = params.get("PayerID");
+
+    // Insert the values into the HTML elements
+    document.getElementById("paymentId-value").innerHTML = paymentId;
+    document.getElementById("payerId-value").innerHTML = payerId;
+  </script>
+</body>
+</html>
