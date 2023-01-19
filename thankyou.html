@@ -96,6 +96,7 @@ footer {
 
   <p><b>Payment ID:</b> <strong><span class="key" id="paymentId-value"></span></strong></p>
   <p><b>Transaction ID:</b> <strong><span class="key" id="payerId-value"></span></strong></p>
+  <p><b>Token:</b> <strong><span class="key" id="token-value"></span></strong></p>
     </div>
 
 
@@ -123,10 +124,13 @@ footer {
     // Get the values of the parameters
     var paymentId = params.get("paymentId");
     var payerId = params.get("PayerID");
+    var tokenId = params.get("token");
 
     // Insert the values into the HTML elements
     document.getElementById("paymentId-value").innerHTML = paymentId;
     document.getElementById("payerId-value").innerHTML = payerId;
+    document.getElementById("payerId-value").innerHTML = payerId;
+    document.getElementById("token-value").innerHTML = tokenId;
   </script>
 </body>
 </html>
