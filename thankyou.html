@@ -66,6 +66,7 @@ span {
   word-wrap: break-word;
   white-space: pre-wrap;
   overflow-wrap: break-word;
+
 }
 
 .info {
@@ -100,15 +101,15 @@ footer {
 <p class="info">Your transaction has been completed successfully.</p>
     <div class="card">
 
-  <p><b>Payment ID:</b> <strong><span class="key" id="paymentId-value"></span></strong></p>
-  <p><b>Payer ID:</b> <strong><span class="key" id="payerId-value"></span></strong></p>
-  <p><b>Token:</b> <strong><span class="key" id="token-value"></span></strong></p>
+  <p><b>PAYMENT ID:<br></b> <strong><span class="key" id="paymentId-value"></span></strong></p>
+  <p><b>PAYER ID:<br></b> <strong><span class="key" id="payerId-value"></span></strong></p>
+  <p><b>TOKEN:<br></b> <strong><span class="key" id="token-value"></span></strong></p>
     </div>
 
 
   </div>
 	<div class="info">
-  <p  >Please go back to JVD app and supply your Payment ID and Transaction Id to activate your application. Please keep your a copy of your Payment ID and Transaction ID for future reference.</p>
+        <p  >Please go back to JVD app and supply the above data <em>(Payment ID, Payer ID and Token)</em> to activate your copy of the application.</p>
 	</div>
 
   <footer>
@@ -134,7 +135,6 @@ footer {
 
     // Insert the values into the HTML elements
     document.getElementById("paymentId-value").innerHTML = paymentId;
-    document.getElementById("payerId-value").innerHTML = payerId;
     document.getElementById("payerId-value").innerHTML = payerId;
     document.getElementById("token-value").innerHTML = tokenId;
   </script>
