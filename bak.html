@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Thank You For Your Payment</title>
+  <style>
+    /* Responsive Styles */
+    @media only screen and (max-width: 600px) {
+      .container {
+        width: 90%;
+        margin: 0 auto;
+      }
+      .card {
+        width: 80%;
+        margin: 0 auto;
+      }
+    }
+
+/* General Styles */
+body {
+  background-color: rgb(45,45,45);
+color: rgb(0,225,127);
+}
+
+      /* position and style logo */
+      .logo {
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        width: 70px;
+        height: 70px;
+        z-index: 1;
+
+	padding: auto;
+
+	margin: auto;
+      }
+      .left-aligned-div {
+        text-align: left;
+      }
+	.page-center{
+	margin: 50px auto;
+	color: yellow;
+}
+
+.container {
+  width: 80%;
+  margin: 0 auto;
+}
+      .card {
+        width: 70%;
+        height: Auto;
+        margin: 50px auto;
+        background: rgb(220,220,220);
+	color:black;
+        box-shadow: 0px 0px 10px #000000;
+        border-radius: 10px;
+        text-align: center;
+        padding: 20px;
+      }
+h1{
+  text-align: center;
+  margin-top: 30px;
+}
+
+span {
+position: relative; /* Add this */
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+
+}
+
+.info {
+  text-align: center;
+  margin: 50px auto;
+
+}
+
+.key{
+color: blue;
+margin:5px;
+padding: 5px;
+
+}
+.fa-copy:before {
+    content: "\f0c5";
+    font-family: "Font Awesome 5 Free";
+}
+.fa-copy {
+    font-size: 20px; /* adjust the size of the icon */
+    color: blue; /* adjust the color of the icon */
+    cursor: pointer; /* change cursor to pointer on hover */
+     position: absolute; /* This is already there */
+    top: 0;
+    right: 0;
+}
+
+
+footer {
+  width: 100%;
+  text-align: center;
+  margin-top: 50px;
+  padding: 20px;
+}
+  </style>
+</head>
+<body>
+<div >
+<img src="jba logo.png" width=40px alt="JBA" class="logo " >
+</div>
+  <div class="container">
+    <h1>Thank you for your payment!</h1>
+<p class="info">Your transaction has been completed successfully.</p>
+    <div class="card">
+
+  <p><b>PAYMENT ID:<br></b> <strong><span class="key" id="paymentId-value"></span></strong><i class="fa fa-copy" aria-hidden="true" onclick="copyToClipboard('paymentId-value')">copy</i></p>
+  <p><b>PAYER ID:<br></b> <strong><span class="key" id="payerId-value"></span></strong><i class="fa fa-copy" aria-hidden="true" onclick="copyToClipboard('payerId-value')">copy</i></p>
+  <p><b>TOKEN:<br></b> <strong><span class="key" id="token-value"><i class="fa fa-copy" aria-hidden="true" onclick="copyToClipboard('token-value')">copy</i></span></strong></p>
+    </div>
+
+
+  </div>
+	<div class="info">
+        <p  >Please go back to JVD app and supply the above data <em>(Payment ID, Payer ID and Token)</em> to activate your copy of the application.</p>
+	</div>
+
+  <footer>
+    <p>If you have any issues or questions, please contact our support team using the contact info below:<br> </p>
+	<div class="page-center">
+		<p>Email: jbadonaiventures@gmail.com</p>
+		<p>Phone: +234 802 222 4284</p>
+	</div>
+  </footer>
+
+  <script>
+
+      function copyToClipboard(spanId) {
+    var span = document.getElementById(spanId);
+    var textToCopy = span.innerText;
+    var tempInput = document.createElement("input");
+    tempInput.style = "position: absolute; left: -1000px; top: -1000px";
+    tempInput.value = textToCopy;
+    document.body.appendChild(tempInput);
+    tempInput.select();
+    document.execCommand("copy");
+    document.body.removeChild(tempInput);
+    alert("Copied the text: " + textToCopy);
+  }
+
+    // Get the current URL
+    var url = window.location.href;
+
+    // Use URLSearchParams to parse the query string
+    let paramString = url.split('?')[1];
+    var params = new URLSearchParams(paramString);
+
+    // Get the values of the parameters
+    var paymentId = params.get("paymentId");
+    var payerId = params.get("PayerID");
+    var tokenId = params.get("token");
+
+    // Insert the values into the HTML elements
+    document.getElementById("paymentId-value").innerHTML = paymentId;
+    document.getElementById("payerId-value").innerHTML = payerId;
+    document.getElementById("token-value").innerHTML = tokenId;
+  </script>
+</body>
+</html>
