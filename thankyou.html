@@ -145,7 +145,7 @@ em {
 				if (queryParams.hasOwnProperty(param)) {
 					var paramValue = queryParams[param];
 					var detailElement = document.createElement("p");
-					var detailContent = "<strong>" + param + ":<br></strong> <em style='border-bottom: 1px dashed'>" + paramValue + "</em> ";
+					var detailContent = "<strong>" + param + ":<br></strong> <em style='bottom: 1px dashed; color: blue;'>" + paramValue + "</em> ";
 					var copyButton = "<button class='copy-btn' onclick=\"copyToClipboard('" + paramValue + "')\">Copy</button>";
 					detailElement.innerHTML = detailContent + copyButton;
 					paymentDetails.appendChild(detailElement);
