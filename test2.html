@@ -1,35 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Payment Confirmation</title>
-
-    <style>
+	<title>Payment Confirmation</title>
+	<style>
 		body {
 			font-family: Arial, sans-serif;
 			margin: 0;
 			padding: 0;
 		}
-
-		    /* position and style logo */
-          .logo {
-            position: fixed;
-            top: 10px;
-            left: 10px;
-            width: 70px;
-            height: 70px;
-            z-index: 1;
-            padding: auto;
-
-        margin: auto;
-          }
-          .left-aligned-div {
-            text-align: left;
-          }
-
-        .page-center{
-            margin: 5px auto;
-            color: yellow;
-        }
 
 		.container {
 			display: flex;
@@ -37,8 +15,7 @@
 			align-items: center;
 			justify-content: center;
 			height: 100vh;
-			color: rgb(0,255,127);
-			background-color: rgb(35,35,35);
+			background-color: #f0f0f0;
 		}
 
 		.card {
@@ -49,7 +26,6 @@
 			width: 400px;
 			margin: 0 auto;
 			text-align: center;
-			color: black;
 		}
 
 		.card h2 {
@@ -64,11 +40,23 @@
 			border-radius: 4px;
 			cursor: pointer;
 			font-size: 12px;
-			margin-left: 5px;
 		}
 
 		.copy-btn:hover {
 			background-color: #3e8e41;
+		}
+
+		em {
+			border-bottom: 1px dashed;
+			word-wrap: break-word;
+			max-width: 100%;
+			display: inline-block;
+		}
+
+		.param-container {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
 		}
 
 		@media screen and (max-width: 480px) {
@@ -76,34 +64,18 @@
 				width: 90%;
 			}
 		}
-
-
-    </style>
-
+	</style>
 </head>
 <body>
+	<div class="container">
+		<div class="card">
+			<h2>Thank you for your payment!</h2>
+			<p>Here are your payment details:</p>
+			<div id="payment-details"></div>
+		</div>
+	</div>
 
-<div>
-    <img src="jba logo.png" width=40px alt="JBA" class="logo ">
-</div>
-
-<div class="container">
-    <h1>Thank you for your payment!</h1>
-    <p class="info">Your transaction has been completed successfully.</p>
-
-    <div class="card">
-        <!--<h2>Thank you for your payment!</h2>-->
-        <!--<p>Here are your payment details:</p>-->
-        <div id="payment-details"></div>
-    </div>
-
-    <div class="info">
-        <p>Please go back to JVD app and supply the above data to activate your
-            copy of the application.</p>
-    </div>
-</div>
-
-<script>
+	<script>
 		function copyToClipboard(text) {
 			var tempElement = document.createElement("textarea");
 			tempElement.value = text;
@@ -135,20 +107,23 @@
 				if (queryParams.hasOwnProperty(param)) {
 					var paramValue = queryParams[param];
 					var detailElement = document.createElement("p");
-					var detailContent = "<strong>" + param + ":</strong> <em style='border-bottom: 1px dashed'>" + paramValue + "</em> ";
-					var copyButton = "<button class='copy-btn' onclick=\"copyToClipboard('" + paramValue + "')\">Copy</button>";
-					detailElement.innerHTML = detailContent + copyButton;
-					paymentDetails.appendChild(detailElement);
-				}
-			}
-		}
+					var detailContent = "<strong>" + param + ":</strong> ";
+					var copyButton = "<button class='copy-btn' onclick=\"copyToClipboard('" + paramValue"')">Copy</button>";
+                    var paramElement = document.createElement("em");
+                    paramElement.textContent = paramValue;
+  			var paramContainer = document.createElement("div");
+  			paramContainer.classList.add("param-container");
+  			paramContainer.appendChild(paramElement);
+  			paramContainer.insertAdjacentHTML("beforeend", copyButton);
 
-		window.onload = function() {
-			createCard();
-		};
+  			detailContent += paramContainer.outerHTML;
+  			detailElement.innerHTML = detailContent;
+  			paymentDetails.appendChild(detailElement);
+  		}
+  	}
+  }
 
-
-</script>
-
+  window.onload = createCard;
+  </script>
 </body>
 </html>
